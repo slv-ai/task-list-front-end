@@ -17,6 +17,7 @@ const TASKS = [
 
 const App = () => {
   const [tasks, settasks] = useState(TASKS);
+
 // toggle complete feature
   const updateTask = (id) => {
     settasks(tasks => tasks.map(task => {
@@ -25,6 +26,13 @@ const App = () => {
       } else {
         return task;
       }
+    }));
+  };
+
+  // delete feature
+  const deleteTask = (id) => {
+    settasks(tasks => tasks.filter(task => {
+      return task.id !== id;
     }));
   };
 
@@ -38,6 +46,7 @@ const App = () => {
           <TaskList 
             tasks={tasks}
             onToggle={updateTask} 
+            onDelete={deleteTask}
           /></div>
       </main>
     </div>
